@@ -1,21 +1,19 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup Label="Main">
-    <OutputType>Exe</OutputType>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <NoWarn>1573;1587;1591;IDE0130</NoWarn>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
   <PropertyGroup Label="Package">
-    <Version>1.0.0</Version>
+    <Version>0.1.0</Version>
     <Authors>DCoats</Authors>
     <Company>Functionairy</Company>
     <Copyright>Copyright (c) Functionairy 2025</Copyright>
-    <Description>Construction console project for the F10Y.L0006 library.</Description>
+    <Description>.NET project file XML node name values for the F10Y.L0006 project.</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <RepositoryUrl>https://github.com/Functionairy/F10Y.L0006.git</RepositoryUrl>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\F10Y.L0006\F10Y.L0006.csproj" />
+    <ProjectReference Include="..\..\..\F10Y.L0000\source\F10Y.L0000\F10Y.L0000.csproj" />
   </ItemGroup>
 </Project>
