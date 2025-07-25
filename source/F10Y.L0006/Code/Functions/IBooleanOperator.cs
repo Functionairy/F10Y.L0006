@@ -23,5 +23,11 @@ namespace F10Y.L0006
             var output = this.To_String_Lower(value);
             return output;
         }
+
+        /// <summary>
+        /// Quality-of-life overload for <see cref="To_String_ForProjectXml(bool)"/>.
+        /// </summary>
+        public new string To_String(bool value)
+            => this.To_String_ForProjectXml(value);
     }
 }

@@ -6,6 +6,9 @@ using F10Y.T0011;
 
 namespace F10Y.L0006
 {
+    /// <summary>
+    /// .NET project file processing library.
+    /// </summary>
     [FunctionsMarker]
     public partial interface IVersionOperator :
         L0000.IVersionOperator
