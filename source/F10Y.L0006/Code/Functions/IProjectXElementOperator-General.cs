@@ -2,11 +2,18 @@ using System;
 using System.Collections.Generic;
 using System.Xml.Linq;
 
+using F10Y.L0000.Extensions;
+
 
 namespace F10Y.L0006
 {
     public partial interface IProjectXElementOperator
     {
+        public IEnumerable<XElement> Enumerate_ItemGroups(XElement projectElement)
+            => projectElement.Enumerate_Children()
+                .Where_NameIs(Instances.ProjectElementNames.ItemGroup)
+                ;
+
         public IEnumerable<XElement> Enumerate_PropertyGroupElements(XElement projectElement)
             => Instances.XElementOperator.Enumerate_Children(
                 projectElement,

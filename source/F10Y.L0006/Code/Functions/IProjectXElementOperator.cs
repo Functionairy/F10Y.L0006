@@ -8,6 +8,9 @@ using F10Y.L0000.Extensions;
 using F10Y.T0002;
 using F10Y.T0011;
 
+using F10Y.L0006.Extensions;
+using F10Y.L0003.L001;
+
 
 namespace F10Y.L0006
 {
@@ -25,6 +28,30 @@ namespace F10Y.L0006
 
 #pragma warning restore IDE1006 // Naming Styles
 
+
+        public bool Has_UseWindowsForms(
+            XElement projectElement,
+            out bool usesWindowsForms_OrDefault)
+            => Instances.XElementOperator.Has_ChildOfChild_Value_First(
+                projectElement,
+                Instances.ProjectElementNames.UseWindowsForms,
+                out usesWindowsForms_OrDefault,
+                Instances.BooleanOperator.From);
+
+
+        #region COM References
+
+        public bool Has_COMReferences_Any(XElement projectElement)
+        {
+            var output = projectElement.Enumerate_ItemGroups()
+                .SelectMany(Instances.XElementOperator.Enumerate_Children)
+                .Where_NameIs(Instances.ProjectElementNames.COMReference)
+                .Any();
+
+            return output;
+        }
+
+        #endregion
 
         #region Generate Documentation Files
 
@@ -136,17 +163,18 @@ namespace F10Y.L0006
 
         #region Project References
 
-        public IEnumerable<XElement> Enumerate_ProjectReferenceElements(XElement projectElement)
+        IEnumerable<XElement> Enumerate_ProjectReferenceElements(XElement projectElement)
             => Instances.XElementOperator.Enumerate_ChildrenOfChildren(
                 projectElement,
-                Instances.ProjectElementNames.ProjectReference);
+                Instances.ProjectNodeNames.ItemGroup,
+                Instances.ProjectNodeNames.ProjectReference);
 
-        public IEnumerable<string> Enumerate_ProjectReference_RelativePaths(XElement projectElement)
+        IEnumerable<string> Enumerate_ProjectReference_RelativePaths(XElement projectElement)
             => this.Enumerate_ProjectReferenceElements(projectElement)
                 .Select(Instances.ProjectXElementsOperator.Get_Include)
                 ;
 
-        public IEnumerable<string> Enumerate_ProjectReferencePaths_Unresolved(
+        IEnumerable<string> Enumerate_ProjectReferencePaths_Unresolved(
             XElement projectElement,
             string projectFilePath)
         {
@@ -161,7 +189,7 @@ namespace F10Y.L0006
             return output;
         }
 
-        public IEnumerable<string> Enumerate_ProjectReferencePaths_Resolved(
+        IEnumerable<string> Enumerate_ProjectReferencePaths_Resolved(
             XElement projectElement,
             string projectFilePath)
         {
@@ -179,14 +207,14 @@ namespace F10Y.L0006
         /// <summary>
         /// Chooses <see cref="Enumerate_ProjectReferencePaths_Resolved(XElement, string)"/> as the default.
         /// </summary>
-        public IEnumerable<string> Enumerate_ProjectReferencePaths(
+        IEnumerable<string> Enumerate_ProjectReferencePaths(
             XElement projectElement,
             string projectFilePath)
             => this.Enumerate_ProjectReferencePaths_Resolved(
                 projectElement,
                 projectFilePath);
 
-        public string[] Get_ProjectReferencePaths_Direct(
+        string[] Get_ProjectReferencePaths_Direct(
             XElement projectElement,
             string projectFilePath)
             => this.Enumerate_ProjectReferencePaths(
@@ -197,14 +225,14 @@ namespace F10Y.L0006
         /// <summary>
         /// Chooses <see cref="Get_ProjectReferencePaths_Direct(XElement, string)"/> as the default.
         /// </summary>
-        public string[] Get_ProjectReferencePaths(
+        string[] Get_ProjectReferencePaths(
             XElement projectElement,
             string projectFilePath)
             => this.Get_ProjectReferencePaths_Direct(
                 projectElement,
                 projectFilePath);
 
-        public Dictionary<string, string[]> Get_ProjectReferencePaths_ByProjectFilePath(
+        Dictionary<string, string[]> Get_ProjectReferencePaths_ByProjectFilePath(
             Dictionary<string, XElement> projectElements_ByProjectFilePath)
         {
             var output = projectElements_ByProjectFilePath
@@ -217,7 +245,7 @@ namespace F10Y.L0006
             return output;
         }
 
-        public bool Has_ProjectReferences(
+        bool Has_ProjectReferences(
             XElement projectElement,
             out string outputType_OrDefault)
             => Instances.XElementOperator.Has_ChildOfChild_Value_First(
@@ -244,11 +272,24 @@ namespace F10Y.L0006
 
         public bool Has_TargetFramework(
             XElement projectElement,
-            out string outputType_OrDefault)
+            out string targetFramework_OrDefault)
             => Instances.XElementOperator.Has_ChildOfChild_Value_First(
                 projectElement,
                 Instances.ProjectElementNames.TargetFramework,
-                out outputType_OrDefault);
+                out targetFramework_OrDefault);
+
+        public Has<string> Has_TargetFramework(XElement projectElement)
+        {
+            var has = this.Has_TargetFramework(
+                projectElement,
+                out var targetFramework_OrDefault);
+
+            var output = Instances.HasOperator.From(
+                targetFramework_OrDefault,
+                has);
+
+            return output;
+        }
 
         public string Get_TargetFramework(XElement projectElement)
             => this.Get_PropertyGroupElement_ChildElement_Value(
@@ -281,6 +322,16 @@ namespace F10Y.L0006
         #endregion
 
         #region SDK
+
+        public string Get_SDK(XElement projectElement)
+        {
+            var attribute = Instances.XElementOperator.Get_Attribute(
+                projectElement,
+                Instances.ProjectAttributeNames.Sdk);
+
+            var output = Instances.XAttributeOperator.Get_Value(attribute);
+            return output;
+        }
 
         public XAttribute Set_SDK(
             XElement projectElement,

@@ -64,6 +64,11 @@ namespace F10Y.L0006.Z000
         public static readonly object MSBuild_ProjectItems_Common;
 
         /// <summary>
+        /// <link><see href="https://learn.microsoft.com/en-us/visualstudio/msbuild/common-msbuild-project-items#comreference"/></link>
+        /// </summary>
+        public static readonly object MSBuild_ProjectItems_Common_COMReference;
+
+        /// <summary>
         /// <link><see href="https://learn.microsoft.com/en-us/visualstudio/msbuild/common-msbuild-project-items#projectreference"/></link>
         /// </summary>
         public static readonly object MSBuild_ProjectItems_Common_ProjectReference;

@@ -14,6 +14,9 @@ namespace F10Y.L0006.Z000
         /// <inheritdoc cref="IProjectNodeNames.Company"/>
         public string Company => Instances.ProjectNodeNames.Company;
 
+        /// <inheritdoc cref="IProjectNodeNames.COMReference"/>
+        public string COMReference => Instances.ProjectNodeNames.COMReference;
+
         /// <inheritdoc cref="IProjectNodeNames.Copyright"/>
         public string Copyright => Instances.ProjectNodeNames.Copyright;
 
@@ -52,6 +55,9 @@ namespace F10Y.L0006.Z000
 
         /// <inheritdoc cref="IProjectNodeNames.TargetFramework"/>
         public string TargetFramework => Instances.ProjectNodeNames.TargetFramework;
+
+        /// <inheritdoc cref="IProjectNodeNames.UseWindowsForms"/>
+        public string UseWindowsForms => Instances.ProjectNodeNames.UseWindowsForms;
 
         /// <inheritdoc cref="IProjectNodeNames.Version"/>
         public string Version => Instances.ProjectNodeNames.Version;

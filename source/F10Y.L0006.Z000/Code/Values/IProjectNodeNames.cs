@@ -25,6 +25,12 @@ namespace F10Y.L0006.Z000
         public string Company => "Company";
 
         /// <summary>
+        /// <para><value>COMReference</value></para>
+        /// <inheritdoc cref="Documentation.MSBuild_ProjectItems_Common_COMReference" path="descendant::link"/>
+        /// </summary>
+        public string COMReference => "COMReference";
+
+        /// <summary>
         /// <para><value>Copyright</value></para>
         /// <inheritdoc cref="Documentation.MSBuild_Properties_NuGet_Pack" path="descendant::link"/>
         /// </summary>
