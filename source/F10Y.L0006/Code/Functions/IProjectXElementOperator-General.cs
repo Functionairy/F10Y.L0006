@@ -9,17 +9,17 @@ namespace F10Y.L0006
 {
     public partial interface IProjectXElementOperator
     {
-        public IEnumerable<XElement> Enumerate_ItemGroups(XElement projectElement)
+        IEnumerable<XElement> Enumerate_ItemGroups(XElement projectElement)
             => projectElement.Enumerate_Children()
                 .Where_NameIs(Instances.ProjectElementNames.ItemGroup)
                 ;
 
-        public IEnumerable<XElement> Enumerate_PropertyGroupElements(XElement projectElement)
+        IEnumerable<XElement> Enumerate_PropertyGroupElements(XElement projectElement)
             => Instances.XElementOperator.Enumerate_Children(
                 projectElement,
                 Instances.ProjectElementNames.PropertyGroup);
 
-        public XElement Get_PropertyGroupElement_ChildElement_First(
+        XElement Get_PropertyGroupElement_ChildElement_First(
             XElement projectElement,
             string childName)
         {
@@ -39,14 +39,14 @@ namespace F10Y.L0006
         /// <summary>
         /// Chooses <see cref="Get_PropertyGroupElement_ChildElement_First(XElement, string)"/> as the default.
         /// </summary>
-        public XElement Get_PropertyGroupElement_ChildElement(
+        XElement Get_PropertyGroupElement_ChildElement(
             XElement projectElement,
             string childName)
             => this.Get_PropertyGroupElement_ChildElement_First(
                 projectElement,
                 childName);
 
-        public TValue Get_PropertyGroupElement_ChildElement_Value<TValue>(
+        TValue Get_PropertyGroupElement_ChildElement_Value<TValue>(
             XElement projectElement,
             string childName,
             Func<XElement, TValue> valueSelector)
@@ -59,7 +59,7 @@ namespace F10Y.L0006
             return output;
         }
 
-        public bool Has_PropertyGroupElement_ChildElement_First(
+        bool Has_PropertyGroupElement_ChildElement_First(
             XElement projectElement,
             string childName,
             out XElement child_OrDefault)
@@ -76,7 +76,7 @@ namespace F10Y.L0006
         /// <summary>
         /// Chooses <see cref="Has_PropertyGroupElement_ChildElement_First(XElement, string, out XElement)"/> as the default.
         /// </summary>
-        public bool Has_PropertyGroupElement_ChildElement(
+        bool Has_PropertyGroupElement_ChildElement(
             XElement projectElement,
             string childName,
             out XElement child_OrDefault)
@@ -85,7 +85,7 @@ namespace F10Y.L0006
                 childName,
                 out child_OrDefault);
 
-        public bool Has_PropertyGroupElement_ChildElement_Value<TValue>(
+        bool Has_PropertyGroupElement_ChildElement_Value<TValue>(
             XElement projectElement,
             string childName,
             Func<XElement, TValue> valueSelector,
@@ -104,17 +104,17 @@ namespace F10Y.L0006
             return output;
         }
 
-        public XElement Acquire_PropertyGroup_Main(XElement projectElement)
+        XElement Acquire_PropertyGroup_Main(XElement projectElement)
             => Instances.XElementOperator.Acquire_Child(
                 projectElement,
                 this.Has_PropertyGroup_Main,
                 this.Create_PropertyGroup);
 
-        public XElement Create_PropertyGroup()
+        XElement Create_PropertyGroup()
             => Instances.XElementOperator.Create_Element(
                 Instances.ProjectElementNames.PropertyGroup);
 
-        public bool Has_PropertyGroup_Main(
+        bool Has_PropertyGroup_Main(
             XElement projectElement,
             out XElement propertyGroup_Main_OrDefault)
         {
@@ -139,7 +139,7 @@ namespace F10Y.L0006
             return has_PropertyGroup_First;
         }
 
-        public (bool, XElement) Has_PropertyGroup_Main(XElement projectElement)
+        (bool, XElement) Has_PropertyGroup_Main(XElement projectElement)
         {
             var exists = this.Has_PropertyGroup_Main(
                 projectElement,

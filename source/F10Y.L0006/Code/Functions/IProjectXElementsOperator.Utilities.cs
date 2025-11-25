@@ -15,14 +15,14 @@ namespace F10Y.L0006.Utilities
     [FunctionsMarker]
     public partial interface IProjectXElementsOperator
     {
-        public Task<XElement> Load(string xmlFilePath)
+        Task<XElement> Load(string xmlFilePath)
             // All insignificant whitespace should be saved.
             => Instances.XElementOperator.Load_PreserveWhitespace(xmlFilePath);
 
-        public XElement Parse(string xmlText)
+        XElement Parse(string xmlText)
             => Instances.XElementOperator.Parse(xmlText);
 
-        public Task Save(
+        Task Save(
             XElement element,
             string xmlFilePath)
             // Project file should be saved without an XML declaration, and with a byte-order mark.
@@ -30,7 +30,32 @@ namespace F10Y.L0006.Utilities
                 element,
                 xmlFilePath);
 
-        public Task Save(
+        /// <summary>
+        /// Saves the project element with re-indenting project elements.
+        /// (Any existing indentation will be preserved.)
+        /// </summary>
+        Task Save_WithoutReindentation(
+            XElement element,
+            string xmlFilePath)
+            // Project file should be saved without an XML declaration, and with a byte-order mark.
+            => Instances.XElementOperator.Save_WithoutXmlDeclaration(
+                element,
+                xmlFilePath);
+
+        /// <summary>
+        /// Saves the project element with re-indentation of project elements.
+        /// (Any existing indentation will be wiped in favor of the standard indentation.)
+        /// </summary>
+        Task Save_WithReindentation(
+            XElement element,
+            string xmlFilePath)
+            // Project file should be saved without an XML declaration, and with a byte-order mark.
+            => Instances.XElementOperator.Save(
+                element,
+                xmlFilePath,
+                Instances.XmlWriterSettingsSet.Indent_AndOmitXmlDeclaration);
+
+        Task Save(
             IEnumerable<XElement> elements,
             string xmlFilePath)
             // Project file should be saved without an XML declaration, and with a byte-order mark.
@@ -38,7 +63,7 @@ namespace F10Y.L0006.Utilities
                 elements,
                 xmlFilePath);
 
-        public Task Save(
+        Task Save(
             XElement element,
             string xmlFilePath,
             XmlWriterSettings xmlWriterSettings)
@@ -50,7 +75,7 @@ namespace F10Y.L0006.Utilities
         /// <summary>
         /// A quality-of-life overload for <see cref="Save(XElement, string)"/>.
         /// </summary>
-        public Task To_File(
+        Task To_File(
             XElement element,
             string xmlFilePath)
             => this.Save(
@@ -60,7 +85,7 @@ namespace F10Y.L0006.Utilities
         /// <summary>
         /// A quality-of-life overload for <see cref="Save(XElement, string, XmlWriterSettings)"/>.
         /// </summary>
-        public Task To_File(
+        Task To_File(
             XElement element,
             string xmlFilePath,
             XmlWriterSettings xmlWriterSettings)
@@ -69,7 +94,7 @@ namespace F10Y.L0006.Utilities
                 xmlFilePath,
                 xmlWriterSettings);
 
-        public string To_Text(XElement projectElement)
+        string To_Text(XElement projectElement)
             => Instances.XElementOperator.To_Text_WithoutXmlDeclaration(projectElement);
     }
 }

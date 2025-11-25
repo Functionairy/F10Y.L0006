@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Xml.Linq;
 
 
@@ -7,17 +6,17 @@ namespace F10Y.L0006
 {
     public partial interface IProjectXElementOperator
     {
-        public XElement Acquire_ItemGroup_ForProjectReferences(XElement projectElement)
+        XElement Acquire_ItemGroup_ForProjectReferences(XElement projectElement)
             => Instances.XElementOperator.Acquire_Child(
                 projectElement,
                 this.Has_ItemGroup_ForProjectReferences,
                 this.Create_ItemGroup);
 
-        public XElement Create_ItemGroup()
+        XElement Create_ItemGroup()
             => Instances.XElementOperator.Create_Element(
                 Instances.ProjectElementNames.ItemGroup);
 
-        public bool Has_ItemGroup_ForProjectReferences(
+        bool Has_ItemGroup_ForProjectReferences(
             XElement projectElement,
             out XElement propertyGroup_Main_OrDefault)
         {
@@ -42,7 +41,7 @@ namespace F10Y.L0006
             return has_PropertyGroup_First;
         }
 
-        public (bool, XElement) Has_ItemGroup_ForProjectReferences(XElement projectElement)
+        (bool, XElement) Has_ItemGroup_ForProjectReferences(XElement projectElement)
         {
             var exists = this.Has_ItemGroup_ForProjectReferences(
                 projectElement,

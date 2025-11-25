@@ -10,18 +10,21 @@ namespace F10Y.L0006
 {
     public partial interface IProjectXElementOperator
     {
-        public new Task<XElement> Load(string projectFilePath)
+        new Task<XElement> Load(string projectFilePath)
             // All insignificant whitespace should be saved.
             => _ProjectXElementsOperator_Utilities.Load(projectFilePath);
 
-        public XElement New_ProjectElement()
+        /// <summary>
+        /// Gets a new element with the name "<inheritdoc cref="Z000.IProjectNodeNames.Project" path="descendant::value"/>".
+        /// </summary>
+        XElement New_ProjectElement()
             => Instances.XElementOperator.New(
                 Instances.ProjectNodeNames.Project);
 
-        public new XElement Parse(string xmlText)
+        new XElement Parse(string xmlText)
             => _ProjectXElementsOperator_Utilities.Parse(xmlText);
 
-        public new Task Save(
+        new Task Save(
             XElement projectElement,
             string projectFilePath)
             // Project file should be saved without an XML declaration, and with a byte-order mark.
@@ -29,7 +32,7 @@ namespace F10Y.L0006
                 projectElement,
                 projectFilePath);
 
-        public new Task Save(
+        new Task Save(
             XElement projectElement,
             string projectFilePath,
             XmlWriterSettings xmlWriterSettings)
@@ -41,7 +44,7 @@ namespace F10Y.L0006
         /// <summary>
         /// A quality-of-life overload for <see cref="Save(XElement, string)"/>.
         /// </summary>
-        public new Task To_File(
+        new Task To_File(
             XElement projectElement,
             string projectFilePath)
             => _ProjectXElementsOperator_Utilities.To_File(
@@ -51,7 +54,7 @@ namespace F10Y.L0006
         /// <summary>
         /// A quality-of-life overload for <see cref="Save(XElement, string, XmlWriterSettings)"/>.
         /// </summary>
-        public new Task To_File(
+        new Task To_File(
             XElement projectElement,
             string projectFilePath,
             XmlWriterSettings xmlWriterSettings)
@@ -60,7 +63,7 @@ namespace F10Y.L0006
                 projectFilePath,
                 xmlWriterSettings);
 
-        public new string To_Text(XElement projectElement)
+        new string To_Text(XElement projectElement)
             => _ProjectXElementsOperator_Utilities.To_Text(projectElement);
     }
 }

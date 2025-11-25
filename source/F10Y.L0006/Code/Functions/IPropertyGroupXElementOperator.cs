@@ -7,6 +7,12 @@ using F10Y.T0011;
 
 namespace F10Y.L0006
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <remarks>
+    /// <inheritdoc cref="Documentation.Project_SelfDescription" path="/summary"/>
+    /// </remarks>
     [FunctionsMarker]
     public partial interface IPropertyGroupXElementOperator :
         Utilities.IProjectXElementsOperator,
@@ -44,6 +50,31 @@ namespace F10Y.L0006
             => Instances.XElementOperator.Set_Child_Value(
                 propertyGroupElement,
                 Instances.ProjectElementNames.RepositoryUrl,
+                repositoryUrl);
+
+        #endregion
+
+        #region TargetFramework
+
+        public string Get_TargetFramework(XElement propertyGroupElement)
+            => Instances.XElementOperator.Get_Child_Value(
+                propertyGroupElement,
+                Instances.ProjectElementNames.TargetFramework);
+
+        public bool Has_TargetFramework(
+            XElement propertyGroupElement,
+            out string repositoryUrl_OrDefault)
+            => Instances.XElementOperator.Has_Child_Value(
+                propertyGroupElement,
+                Instances.ProjectElementNames.TargetFramework,
+                out repositoryUrl_OrDefault);
+
+        public void Set_TargetFramework(
+            XElement propertyGroupElement,
+            string repositoryUrl)
+            => Instances.XElementOperator.Set_Child_Value(
+                propertyGroupElement,
+                Instances.ProjectElementNames.TargetFramework,
                 repositoryUrl);
 
         #endregion

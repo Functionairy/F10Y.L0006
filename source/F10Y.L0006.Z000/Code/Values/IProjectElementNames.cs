@@ -23,6 +23,9 @@ namespace F10Y.L0006.Z000
         /// <inheritdoc cref="IProjectNodeNames.Description"/>
         public string Description => Instances.ProjectNodeNames.Description;
 
+        /// <inheritdoc cref="IProjectNodeNames.Folder"/>
+        public string Folder => Instances.ProjectNodeNames.Folder;
+
         /// <inheritdoc cref="IProjectNodeNames.GenerateDocumentationFile"/>
         public string GenerateDocumentationFile => Instances.ProjectNodeNames.GenerateDocumentationFile;
 
