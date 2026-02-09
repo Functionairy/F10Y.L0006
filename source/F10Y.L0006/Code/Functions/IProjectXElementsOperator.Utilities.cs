@@ -13,6 +13,11 @@ namespace F10Y.L0006.Utilities
     /// Functions for working with any XML element within a .NET (Visual Studio) project file.
     /// </summary>
     [FunctionsMarker]
+    [DomainSetDescriptor(
+        IDomainNames.dotNET_Constant,
+        IDomainNames.Project_Constant,
+        IDomainNames.XML_Constant
+        )]
     public partial interface IProjectXElementsOperator
     {
         Task<XElement> Load(string xmlFilePath)

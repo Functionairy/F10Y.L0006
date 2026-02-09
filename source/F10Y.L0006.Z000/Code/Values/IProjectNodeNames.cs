@@ -1,12 +1,21 @@
 using System;
 
+using F10Y.L0026.T007;
 using F10Y.T0003;
+using F10Y.Z0008;
 
 using Documentation_Common = F10Y.Y0000.Documentation;
 
 
 namespace F10Y.L0006.Z000
 {
+    [DomainSetDescriptor(
+        IDomainNames.dotNET_Constant,
+        IDomainNames.Project_Constant,
+        IDomainNames.XML_Constant,
+        IDomainNames.Node_Constant,
+        IDomainNames.Names_Constant
+        )]
     [ValuesMarker]
     public partial interface IProjectNodeNames
     {
