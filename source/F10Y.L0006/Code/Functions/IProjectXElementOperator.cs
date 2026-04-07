@@ -28,12 +28,12 @@ namespace F10Y.L0006
 #pragma warning disable IDE1006 // Naming Styles
 
         [Ignore]
-        public Utilities.IProjectXElementsOperator _ProjectXElementsOperator_Utilities => ProjectXElementsOperator.Instance;
+        Utilities.IProjectXElementsOperator _ProjectXElementsOperator_Utilities => ProjectXElementsOperator.Instance;
 
 #pragma warning restore IDE1006 // Naming Styles
 
 
-        public bool Has_UseWindowsForms(
+        bool Has_UseWindowsForms(
             XElement projectElement,
             out bool usesWindowsForms_OrDefault)
             => Instances.XElementOperator.Has_ChildOfChild_Value_First(
@@ -45,7 +45,7 @@ namespace F10Y.L0006
 
         #region COM References
 
-        public bool Has_COMReferences_Any(XElement projectElement)
+        bool Has_COMReferences_Any(XElement projectElement)
         {
             var output = projectElement.Enumerate_ItemGroups()
                 .SelectMany(Instances.XElementOperator.Enumerate_Children)
@@ -59,7 +59,7 @@ namespace F10Y.L0006
 
         #region Generate Documentation Files
 
-        public XElement Acquire_GenerateDocumentationFile(
+        XElement Acquire_GenerateDocumentationFile(
             XElement projectElement,
             Func<XElement, XElement> acquire_PropertyGroup)
             => Instances.XElementOperator.Acquire_ChildOfChild(
@@ -67,12 +67,12 @@ namespace F10Y.L0006
                 acquire_PropertyGroup,
                 Instances.ProjectElementNames.GenerateDocumentationFile);
 
-        public XElement Acquire_GenerateDocumentationFile(XElement projectElement)
+        XElement Acquire_GenerateDocumentationFile(XElement projectElement)
             => this.Acquire_GenerateDocumentationFile(
                 projectElement,
                 this.Acquire_PropertyGroup_Main);
 
-        public bool Has_GenerateDocumentationFile(
+        bool Has_GenerateDocumentationFile(
             XElement projectElement,
             out bool generateDocumentationFile_OrDefault)
             => Instances.XElementOperator.Has_ChildOfChild_Value_First(
@@ -81,13 +81,13 @@ namespace F10Y.L0006
                 out generateDocumentationFile_OrDefault,
                 Instances.XElementOperator.Get_Value_AsBoolean);
 
-        public bool Get_GenerateDocumentationFile(XElement projectElement)
+        bool Get_GenerateDocumentationFile(XElement projectElement)
             => this.Get_PropertyGroupElement_ChildElement_Value(
                 projectElement,
                 Instances.ProjectElementNames.GenerateDocumentationFile,
                 Instances.XElementOperator.Get_Value_AsBoolean);
 
-        public XElement Set_GenerateDocumentationFile(
+        XElement Set_GenerateDocumentationFile(
             XElement projectElement,
             bool generateDocumentationFile,
             Func<XElement, XElement> acquire_GenerateDocumentationFile)
@@ -102,7 +102,7 @@ namespace F10Y.L0006
             return output;
         }
 
-        public XElement Set_GenerateDocumentationFile(
+        XElement Set_GenerateDocumentationFile(
             XElement projectElement,
             bool generateDocumentationFile)
             => this.Set_GenerateDocumentationFile(
@@ -162,7 +162,7 @@ namespace F10Y.L0006
 
         #region Output Type
 
-        public XElement Acquire_OutputType(
+        XElement Acquire_OutputType(
             XElement projectElement,
             Func<XElement, XElement> acquire_PropertyGroup)
             => Instances.XElementOperator.Acquire_ChildOfChild(
@@ -170,12 +170,12 @@ namespace F10Y.L0006
                 acquire_PropertyGroup,
                 Instances.ProjectElementNames.OutputType);
 
-        public XElement Acquire_OutputType(XElement projectElement)
+        XElement Acquire_OutputType(XElement projectElement)
             => this.Acquire_OutputType(
                 projectElement,
                 this.Acquire_PropertyGroup_Main);
 
-        public bool Has_OutputType(
+        bool Has_OutputType(
             XElement projectElement,
             out string outputType_OrDefault)
             => Instances.XElementOperator.Has_ChildOfChild_Value_First(
@@ -183,13 +183,13 @@ namespace F10Y.L0006
                 Instances.ProjectElementNames.OutputType,
                 out outputType_OrDefault);
 
-        public string Get_OutputType(XElement projectElement)
+        string Get_OutputType(XElement projectElement)
             => this.Get_PropertyGroupElement_ChildElement_Value(
                 projectElement,
                 Instances.ProjectElementNames.OutputType,
                 Instances.XElementOperator.Get_Value_AsString);
 
-        public XElement Set_OutputType(
+        XElement Set_OutputType(
             XElement projectElement,
             string outputType,
             Func<XElement, XElement> acquire_OutputType)
@@ -203,7 +203,7 @@ namespace F10Y.L0006
             return output;
         }
 
-        public XElement Set_OutputType(
+        XElement Set_OutputType(
             XElement projectElement,
             string outputType)
             => this.Set_OutputType(
@@ -285,7 +285,7 @@ namespace F10Y.L0006
                 projectFilePath);
 
         Dictionary<string, string[]> Get_ProjectReferencePaths_ByProjectFilePath(
-            Dictionary<string, XElement> projectElements_ByProjectFilePath)
+            IDictionary<string, XElement> projectElements_ByProjectFilePath)
         {
             var output = projectElements_ByProjectFilePath
                 .ToDictionary(
@@ -309,7 +309,7 @@ namespace F10Y.L0006
 
         #region Target Framework
 
-        public XElement Acquire_TargetFramework(
+        XElement Acquire_TargetFramework(
             XElement projectElement,
             Func<XElement, XElement> acquire_PropertyGroup)
             => Instances.XElementOperator.Acquire_ChildOfChild(
@@ -317,12 +317,12 @@ namespace F10Y.L0006
                 acquire_PropertyGroup,
                 Instances.ProjectElementNames.TargetFramework);
 
-        public XElement Acquire_TargetFramework(XElement projectElement)
+        XElement Acquire_TargetFramework(XElement projectElement)
             => this.Acquire_OutputType(
                 projectElement,
                 this.Acquire_PropertyGroup_Main);
 
-        public bool Has_TargetFramework(
+        bool Has_TargetFramework(
             XElement projectElement,
             out string targetFramework_OrDefault)
             => Instances.XElementOperator.Has_ChildOfChild_Value_First(
@@ -330,7 +330,7 @@ namespace F10Y.L0006
                 Instances.ProjectElementNames.TargetFramework,
                 out targetFramework_OrDefault);
 
-        public Has<string> Has_TargetFramework(XElement projectElement)
+        Has<string> Has_TargetFramework(XElement projectElement)
         {
             var has = this.Has_TargetFramework(
                 projectElement,
@@ -343,13 +343,13 @@ namespace F10Y.L0006
             return output;
         }
 
-        public string Get_TargetFramework(XElement projectElement)
+        string Get_TargetFramework(XElement projectElement)
             => this.Get_PropertyGroupElement_ChildElement_Value(
                 projectElement,
                 Instances.ProjectElementNames.TargetFramework,
                 Instances.XElementOperator.Get_Value_AsString);
 
-        public XElement Set_TargetFramework(
+        XElement Set_TargetFramework(
             XElement projectElement,
             string targetFramework,
             Func<XElement, XElement> acquire_TargetFramework)
@@ -363,7 +363,7 @@ namespace F10Y.L0006
             return output;
         }
 
-        public XElement Set_TargetFramework(
+        XElement Set_TargetFramework(
             XElement projectElement,
             string targetFramework)
             => this.Set_TargetFramework(
@@ -375,7 +375,7 @@ namespace F10Y.L0006
 
         #region SDK
 
-        public string Get_SDK(XElement projectElement)
+        string Get_SDK(XElement projectElement)
         {
             var attribute = Instances.XElementOperator.Get_Attribute(
                 projectElement,
@@ -385,7 +385,10 @@ namespace F10Y.L0006
             return output;
         }
 
-        public XAttribute Set_SDK(
+        /// <summary>
+        /// Sets the SDK attribute on the project element.
+        /// </summary>
+        XAttribute Set_SDK(
             XElement projectElement,
             string sdk)
         {

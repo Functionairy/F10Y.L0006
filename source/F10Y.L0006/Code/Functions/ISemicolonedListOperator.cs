@@ -10,17 +10,17 @@ namespace F10Y.L0006
     [FunctionsMarker]
     public partial interface ISemicolonedListOperator
     {
-        public string Join(params string[] warnings)
-            => this.Join(warnings.AsEnumerable());
+        public string Join(params string[] values)
+            => this.Join(values.AsEnumerable());
 
-        public string Join(IEnumerable<string> warnings)
+        public string Join(IEnumerable<string> values)
             => Instances.StringOperator.Join(
                 Instances.Strings.Semicolon,
-                warnings);
+                values);
 
-        public string[] Split(string warnings)
+        public string[] Split(string values)
             => Instances.StringOperator.Split(
                 Instances.Strings.Semicolon,
-                warnings);
+                values);
     }
 }

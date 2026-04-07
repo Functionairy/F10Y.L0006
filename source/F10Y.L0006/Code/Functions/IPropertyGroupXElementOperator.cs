@@ -21,22 +21,22 @@ namespace F10Y.L0006
 #pragma warning disable IDE1006 // Naming Styles
 
         [Ignore]
-        public IGroupElementOperator _GroupElementOperator => GroupElementOperator.Instance;
+        IGroupElementOperator _GroupElementOperator => GroupElementOperator.Instance;
 
         [Ignore]
-        public Utilities.IProjectXElementsOperator _ProjectXElementsOperator_Utilities => ProjectXElementsOperator.Instance;
+        Utilities.IProjectXElementsOperator _ProjectXElementsOperator_Utilities => ProjectXElementsOperator.Instance;
 
 #pragma warning restore IDE1006 // Naming Styles
 
 
         #region RepositoryUrl
 
-        public string Get_RepositoryUrl(XElement propertyGroupElement)
+        string Get_RepositoryUrl(XElement propertyGroupElement)
             => Instances.XElementOperator.Get_Child_Value(
                 propertyGroupElement,
                 Instances.ProjectElementNames.RepositoryUrl);
 
-        public bool Has_RepositoryUrl(
+        bool Has_RepositoryUrl(
             XElement propertyGroupElement,
             out string repositoryUrl_OrDefault)
             => Instances.XElementOperator.Has_Child_Value(
@@ -44,7 +44,7 @@ namespace F10Y.L0006
                 Instances.ProjectElementNames.RepositoryUrl,
                 out repositoryUrl_OrDefault);
 
-        public void Set_RepositoryUrl(
+        void Set_RepositoryUrl(
             XElement propertyGroupElement,
             string repositoryUrl)
             => Instances.XElementOperator.Set_Child_Value(
@@ -56,12 +56,12 @@ namespace F10Y.L0006
 
         #region TargetFramework
 
-        public string Get_TargetFramework(XElement propertyGroupElement)
+        string Get_TargetFramework(XElement propertyGroupElement)
             => Instances.XElementOperator.Get_Child_Value(
                 propertyGroupElement,
                 Instances.ProjectElementNames.TargetFramework);
 
-        public bool Has_TargetFramework(
+        bool Has_TargetFramework(
             XElement propertyGroupElement,
             out string repositoryUrl_OrDefault)
             => Instances.XElementOperator.Has_Child_Value(
@@ -69,7 +69,7 @@ namespace F10Y.L0006
                 Instances.ProjectElementNames.TargetFramework,
                 out repositoryUrl_OrDefault);
 
-        public void Set_TargetFramework(
+        void Set_TargetFramework(
             XElement propertyGroupElement,
             string repositoryUrl)
             => Instances.XElementOperator.Set_Child_Value(
