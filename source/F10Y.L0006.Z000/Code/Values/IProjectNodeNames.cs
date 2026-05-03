@@ -111,6 +111,12 @@ namespace F10Y.L0006.Z000
         string PackageLicenseExpression => "PackageLicenseExpression";
 
         /// <summary>
+        /// <para><value>PackageReference</value></para>
+        /// <inheritdoc cref="Documentation.NuGet_PackageReference" path="descendant::link"/>
+        /// </summary>
+        string PackageReference => "PackageReference";
+
+        /// <summary>
         /// <para><value>PackageRequireLicenseAcceptance</value></para>
         /// <inheritdoc cref="Documentation.MSBuild_Properties_NuGet_Pack" path="descendant::link"/>
         /// </summary>

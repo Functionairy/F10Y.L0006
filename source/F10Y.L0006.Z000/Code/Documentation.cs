@@ -119,5 +119,11 @@ namespace F10Y.L0006.Z000
         /// <link><see href="http://schemas.microsoft.com/developer/msbuild/2003"/></link>
         /// </summary>
         public static readonly object MSBuildProjectFileSchema_xmlns;
+
+
+        /// <summary>
+        /// <link><see href="https://learn.microsoft.com/en-us/nuget/consume-packages/package-references-in-project-files"/></link>
+        /// </summary>
+        public static readonly object NuGet_PackageReference;
     }
 }

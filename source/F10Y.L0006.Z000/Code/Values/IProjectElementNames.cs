@@ -18,60 +18,63 @@ namespace F10Y.L0006.Z000
     public partial interface IProjectElementNames
     {
         /// <inheritdoc cref="IProjectNodeNames.Authors"/>
-        public string Authors => Instances.ProjectNodeNames.Authors;
+        string Authors => Instances.ProjectNodeNames.Authors;
 
         /// <inheritdoc cref="IProjectNodeNames.Company"/>
-        public string Company => Instances.ProjectNodeNames.Company;
+        string Company => Instances.ProjectNodeNames.Company;
 
         /// <inheritdoc cref="IProjectNodeNames.COMReference"/>
-        public string COMReference => Instances.ProjectNodeNames.COMReference;
+        string COMReference => Instances.ProjectNodeNames.COMReference;
 
         /// <inheritdoc cref="IProjectNodeNames.Copyright"/>
-        public string Copyright => Instances.ProjectNodeNames.Copyright;
+        string Copyright => Instances.ProjectNodeNames.Copyright;
 
         /// <inheritdoc cref="IProjectNodeNames.Description"/>
-        public string Description => Instances.ProjectNodeNames.Description;
+        string Description => Instances.ProjectNodeNames.Description;
 
         /// <inheritdoc cref="IProjectNodeNames.Folder"/>
-        public string Folder => Instances.ProjectNodeNames.Folder;
+        string Folder => Instances.ProjectNodeNames.Folder;
 
         /// <inheritdoc cref="IProjectNodeNames.GenerateDocumentationFile"/>
-        public string GenerateDocumentationFile => Instances.ProjectNodeNames.GenerateDocumentationFile;
+        string GenerateDocumentationFile => Instances.ProjectNodeNames.GenerateDocumentationFile;
 
         /// <inheritdoc cref="IProjectNodeNames.ItemGroup"/>
-        public string ItemGroup => Instances.ProjectNodeNames.ItemGroup;
+        string ItemGroup => Instances.ProjectNodeNames.ItemGroup;
 
         /// <inheritdoc cref="IProjectNodeNames.NoWarn"/>
-        public string NoWarn => Instances.ProjectNodeNames.NoWarn;
+        string NoWarn => Instances.ProjectNodeNames.NoWarn;
 
         /// <inheritdoc cref="IProjectNodeNames.OutputType"/>
-        public string OutputType => Instances.ProjectNodeNames.OutputType;
+        string OutputType => Instances.ProjectNodeNames.OutputType;
 
         /// <inheritdoc cref="IProjectNodeNames.PackageLicenseExpression"/>
-        public string PackageLicenseExpression => Instances.ProjectNodeNames.PackageLicenseExpression;
+        string PackageLicenseExpression => Instances.ProjectNodeNames.PackageLicenseExpression;
+
+        /// <inheritdoc cref="IProjectNodeNames.PackageReference"/>
+        string PackageReference => Instances.ProjectNodeNames.PackageReference;
 
         /// <inheritdoc cref="IProjectNodeNames.PackageRequireLicenseAcceptance"/>
-        public string PackageRequireLicenseAcceptance => Instances.ProjectNodeNames.PackageRequireLicenseAcceptance;
+        string PackageRequireLicenseAcceptance => Instances.ProjectNodeNames.PackageRequireLicenseAcceptance;
 
         /// <inheritdoc cref="IProjectNodeNames.Project"/>
-        public string Project => Instances.ProjectNodeNames.Project;
+        string Project => Instances.ProjectNodeNames.Project;
 
         /// <inheritdoc cref="IProjectNodeNames.ProjectReference"/>
-        public string ProjectReference => Instances.ProjectNodeNames.ProjectReference;
+        string ProjectReference => Instances.ProjectNodeNames.ProjectReference;
 
         /// <inheritdoc cref="IProjectNodeNames.PropertyGroup"/>
-        public string PropertyGroup => Instances.ProjectNodeNames.PropertyGroup;
+        string PropertyGroup => Instances.ProjectNodeNames.PropertyGroup;
 
         /// <inheritdoc cref="IProjectNodeNames.RepositoryUrl"/>
-        public string RepositoryUrl => Instances.ProjectNodeNames.RepositoryUrl;
+        string RepositoryUrl => Instances.ProjectNodeNames.RepositoryUrl;
 
         /// <inheritdoc cref="IProjectNodeNames.TargetFramework"/>
-        public string TargetFramework => Instances.ProjectNodeNames.TargetFramework;
+        string TargetFramework => Instances.ProjectNodeNames.TargetFramework;
 
         /// <inheritdoc cref="IProjectNodeNames.UseWindowsForms"/>
-        public string UseWindowsForms => Instances.ProjectNodeNames.UseWindowsForms;
+        string UseWindowsForms => Instances.ProjectNodeNames.UseWindowsForms;
 
         /// <inheritdoc cref="IProjectNodeNames.Version"/>
-        public string Version => Instances.ProjectNodeNames.Version;
+        string Version => Instances.ProjectNodeNames.Version;
     }
 }
