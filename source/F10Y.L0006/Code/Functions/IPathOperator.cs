@@ -6,6 +6,12 @@ using F10Y.T0011;
 
 namespace F10Y.L0006
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <remarks>
+    /// <inheritdoc cref="Documentation.Project_SelfDescription" path="/summary"/>
+    /// </remarks>
     [FunctionsMarker]
     public partial interface IPathOperator :
         For_Projects_dotNet.IPathOperator,
