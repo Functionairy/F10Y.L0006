@@ -145,6 +145,19 @@ namespace F10Y.L0006
             return output;
         }
 
+        async Task In_ProjectContext_Modify(
+            string projectFilePath,
+            Func<XElement, XElement> modifier)
+        {
+            var projectElement_Original = await this.Load(projectFilePath);
+
+            var projectElement_Modified = modifier(projectElement_Original);
+
+            await this.Save(
+                projectFilePath,
+                projectElement_Modified);
+        }
+
         async Task<(TOut Output, XElement ProjectElement)> In_ProjectContext_Query<TOut>(
             string projectFilePath,
             Func<XElement, TOut> projectElement_Function,

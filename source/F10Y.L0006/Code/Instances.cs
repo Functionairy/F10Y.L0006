@@ -23,6 +23,7 @@ namespace F10Y.L0006
         public static L0000.IStrings Strings => L0000.Strings.Instance;
         public static ITokenSeparators TokenSeparators => L0006.TokenSeparators.Instance;
         public static IValues Values => L0006.Values.Instance;
+        public static IWarningsOperator WarningsOperator => L0006.WarningsOperator.Instance;
         public static L0000.IXAttributeOperator XAttributeOperator => L0000.XAttributeOperator.Instance;
         public static L0000.IXElementOperator XElementOperator => L0000.XElementOperator.Instance;
         public static L0000.IXmlWriterSettingsSet XmlWriterSettingsSet => L0000.XmlWriterSettingsSet.Instance;

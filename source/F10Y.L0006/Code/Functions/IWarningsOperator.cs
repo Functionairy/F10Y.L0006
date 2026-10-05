@@ -13,13 +13,13 @@ namespace F10Y.L0006
 #pragma warning disable IDE1006 // Naming Styles
 
         [Ignore]
-        public ISemicolonedListOperator _SemicolonedListOperator => SemicolonedListOperator.Instance;
+        ISemicolonedListOperator _SemicolonedListOperator => SemicolonedListOperator.Instance;
 
 #pragma warning restore IDE1006 // Naming Styles
 
 
         /// <inheritdoc cref="ITokenSeparators.For_WarningsList"/>
-        public string Get_WarningsList_TokenSeparator()
+        string Get_WarningsList_TokenSeparator()
             => Instances.TokenSeparators.For_WarningsList;
     }
 }

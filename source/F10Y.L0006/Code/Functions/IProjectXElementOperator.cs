@@ -9,6 +9,7 @@ using F10Y.T0011;
 
 using F10Y.L0006.Extensions;
 using F10Y.L0003.L001;
+using F10Y.L0003;
 
 
 namespace F10Y.L0006
@@ -157,6 +158,89 @@ namespace F10Y.L0006
 
             return (exists, propertyGroup_Main_OrDefault);
         }
+
+        #endregion
+
+        #region NoWarn
+
+        XElement Acquire_NoWarn(
+            XElement projectElement,
+            Func<XElement, XElement> acquire_PropertyGroup)
+            => Instances.XElementOperator.Acquire_ChildOfChild(
+                projectElement,
+                acquire_PropertyGroup,
+                Instances.ProjectElementNames.NoWarn);
+
+        XElement Acquire_NoWarn(XElement projectElement)
+            => this.Acquire_NoWarn(
+                projectElement,
+                this.Acquire_PropertyGroup_Main);
+
+        bool Has_NoWarn(
+            XElement projectElement,
+            out string noWarn_OrDefault,
+            OverloadToken_Output<string> noWarn_AsString)
+            => Instances.XElementOperator.Has_ChildOfChild_Value_First(
+                projectElement,
+                Instances.ProjectElementNames.NoWarn,
+                out noWarn_OrDefault);
+
+        bool Has_NoWarn(
+            XElement projectElement,
+            out string noWarn_OrDefault)
+            => this.Has_NoWarn(
+                projectElement,
+                out noWarn_OrDefault,
+                OverloadToken_Output<string>.Instance);
+
+        bool Has_NoWarn(
+            XElement projectElement,
+            out string[] noWarn_OrDefault,
+            OverloadToken_Output<string[]> noWarn_AsStringArray)
+        {
+            var has_NoWarn = this.Has_NoWarn(
+                projectElement,
+                out var noWarn_OrDefault_String,
+                OverloadToken_Output<string>.Instance);
+
+            noWarn_OrDefault = has_NoWarn
+                ? Instances.StringOperator.Split(
+                    Instances.TokenSeparators.For_WarningsList,
+                    noWarn_OrDefault_String)
+                : default
+                ;
+
+            return has_NoWarn;
+        }
+
+        XElement Set_NoWarn(
+            XElement projectElement,
+            string noWarn,
+            Func<XElement, XElement> acquire_NoWarn)
+        {
+            var output = acquire_NoWarn(projectElement);
+
+            Instances.XElementOperator.Set_Value(
+                output,
+                noWarn);
+
+            return output;
+        }
+
+        XElement Set_NoWarn(
+            XElement projectElement,
+            string noWarn)
+            => this.Set_NoWarn(
+                projectElement,
+                noWarn,
+                this.Acquire_NoWarn);
+
+        XElement Set_NoWarn(
+            XElement projectElement,
+            IEnumerable<string> warnings)
+            => this.Set_NoWarn(
+                projectElement,
+                Instances.WarningsOperator.Join(warnings));
 
         #endregion
 
@@ -318,7 +402,7 @@ namespace F10Y.L0006
                 Instances.ProjectElementNames.TargetFramework);
 
         XElement Acquire_TargetFramework(XElement projectElement)
-            => this.Acquire_OutputType(
+            => this.Acquire_TargetFramework(
                 projectElement,
                 this.Acquire_PropertyGroup_Main);
 
